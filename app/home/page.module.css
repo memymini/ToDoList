@@ -1,0 +1,31 @@
+.home_container {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 28px;
+}
+
+.search_box_container {
+    width: 80%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search_box {
+    width: 1000px;
+    height: 56px;
+    background-image: url('/search-box.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 24px, 17px;
+    font-size: 16px;
+    color: #64748B;
+    padding: 17px 24px 17px 24px;
+}
+
+.add_button {}
