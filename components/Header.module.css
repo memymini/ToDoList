@@ -1,0 +1,23 @@
+.header_container {
+    width: auto;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.banner_container {
+    width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+@media (min-width: 768px) {
+    .header_container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
