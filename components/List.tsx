@@ -19,11 +19,11 @@ export default function List({ titleImage, listImage, emptyText, items }: ListPr
 
     return (
         <div className={styles.list_section}>
-            <Image src={titleImage} alt="제목" width={101} height={36} className={styles.list_name} />
+            <Image src={titleImage} alt="title" width={101} height={36} className={styles.list_name} />
 
             {items.length === 0 ? (
                 <div>
-                    <Image src={listImage} alt="리스트 이미지" width={240} height={240} />
+                    <Image src={listImage} alt="list image" width={240} height={240} />
                     <p className={styles.empty_comment}>
                         {emptyText.split('\n').map((line, i) => (
                             <span key={i}>
