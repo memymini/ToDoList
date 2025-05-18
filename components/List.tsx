@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import styles from "./List.module.css";
-
+import ListItem from "./ListItem";
 type TodoItem = {
     id: number;
     name: string;
@@ -16,6 +16,7 @@ interface ListProps {
 }
 
 export default function List({ titleImage, listImage, emptyText, items }: ListProps) {
+
     return (
         <div className={styles.list_section}>
             <Image src={titleImage} alt="제목" width={101} height={36} className={styles.list_name} />
@@ -35,13 +36,12 @@ export default function List({ titleImage, listImage, emptyText, items }: ListPr
             ) : (
                 <ul className={styles.todo_list}>
                     {items.map((item) => (
-                        <li key={item.id} className={`${styles.todo_item} ${item.isCompleted ? styles.completed : ""}`}
-                        >
-                            <img src={item.isCompleted ? "/check-box-done.png" : "/check-box-empty.png"}
-                                className={styles.checkbox}
-                                alt={item.isCompleted ? "완료됨" : "미완료"}
-                            />{item.name}
-                        </li>
+                        <ListItem
+                            key={item.id}
+                            id={item.id}
+                            name={item.name}
+                            isCompleted={item.isCompleted}
+                        />
                     ))}
                 </ul>
             )}
