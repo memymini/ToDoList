@@ -28,6 +28,7 @@ export default function DetailPage({ params }: { params: Promise<{ id: string }>
 
     const imageToShow = previewUrl || item?.imageUrl;
 
+    // 초기 데이터 로드
     useEffect(() => {
         const fetchItem = async () => {
             try {
@@ -48,11 +49,11 @@ export default function DetailPage({ params }: { params: Promise<{ id: string }>
 
         fetchItem();
     }, [id]);
-
+    // 데이터 수정(PATCH)
     const handleUpdate = async () => {
         try {
             let imageUrl = previewUrl ?? item?.imageUrl ?? "";
-
+            // 1. 이미지 POST
             if (uploadFile) {
                 const formData = new FormData();
                 formData.append("image", uploadFile);
@@ -68,7 +69,7 @@ export default function DetailPage({ params }: { params: Promise<{ id: string }>
                 const uploadData = JSON.parse(resultText);
                 imageUrl = uploadData.url;
             }
-
+            // 2. PATCH 요청
             const patchRes = await fetch(`${baseUrl}/${tenantId}/items/${id}`, {
                 method: "PATCH",
                 headers: {
@@ -77,8 +78,7 @@ export default function DetailPage({ params }: { params: Promise<{ id: string }>
                 body: JSON.stringify({
                     name: item?.name ?? "",
                     memo,
-                    imageUrl,
-                    isCompleted: item?.isCompleted ?? false,
+                    imageUrl
                 }),
             });
 
@@ -92,7 +92,7 @@ export default function DetailPage({ params }: { params: Promise<{ id: string }>
             alert(`오류 발생: ${error.message}`);
         }
     };
-
+    // 데이터 삭제(DELETE)
     const handleDelete = async () => {
         try {
             const res = await fetch(`${baseUrl}/${tenantId}/items/${id}`, {
@@ -108,7 +108,7 @@ export default function DetailPage({ params }: { params: Promise<{ id: string }>
             alert("삭제 중 오류 발생");
         }
     };
-
+    // 이미지 업로드 로직
     const handleUploadClick = () => {
         fileInputRef.current?.click();
     };
@@ -123,6 +123,11 @@ export default function DetailPage({ params }: { params: Promise<{ id: string }>
         }
     };
 
+    const handleStatusToggle = (newStatus: boolean) => {
+        if (item) {
+            setItem({ ...item, isCompleted: newStatus });
+        }
+    };
     if (loading || !item) return <p />;
 
     return (

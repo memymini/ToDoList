@@ -2,8 +2,8 @@
     width: 100%;
     height: 56px;
     border-radius: 27px;
-    border: 2px solid #0F172A;
-    background: #FFFFFF;
+    border: 2px solid var(--color-slate-900);
+    background: var(--color-slate-100);
     display: flex;
     align-items: center;
     gap: 12px;
@@ -14,12 +14,12 @@
     width: 100%;
     height: 56px;
     border-radius: 27px;
-    border: 2px solid #0F172A;
+    border: 2px solid var(--color-slate-900);
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 16px;
-    background: #EDE9FE;
+    background: var(--color-violet-100);
     text-decoration: line-through;
 }
 
