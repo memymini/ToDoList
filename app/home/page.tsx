@@ -12,6 +12,7 @@ type TodoItem = {
   isCompleted: boolean;
 };
 
+// 목록 GET 요청 함수
 export default function HomePage() {
   const [todos, setTodos] = useState<TodoItem[]>([]);
   const [newTodo, setNewTodo] = useState("");
@@ -31,7 +32,7 @@ export default function HomePage() {
     }
   };
 
-  // 목록 GET 요청 함수
+
   useEffect(() => {
     fetchTodos();
   }, []);
@@ -58,8 +59,8 @@ export default function HomePage() {
       console.log("요청 성공, 상태코드:", res.status);
 
       if (!res.ok) throw new Error("Failed to add todo");
-      setNewTodo(""); // 입력창 비우기
-      fetchTodos();   // 목록 새로고침
+      setNewTodo("");
+      fetchTodos();
     } catch (err) {
       console.error("할 일 추가 실패:", err);
     }
