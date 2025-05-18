@@ -57,13 +57,13 @@
 }
 
 .img_icon {
-    width: 64;
-    height: 64;
+    width: 64px;
+    height: 64px;
 }
 
 .upload_icon {
-    width: 64;
-    height: 64;
+    width: 64px;
+    height: 64px;
     position: absolute;
     right: 16px;
     bottom: 16px;
